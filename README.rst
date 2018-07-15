@@ -4,8 +4,10 @@ Concurrency
 파이썬에서 동시성 처리를 고려할 경우 많이 듣게 되는 것이 바로 GIL이다. GIL을 사용할 경우에 우리가 원하는 만큼의 성능이 나오지 않을 수 있다.
 그래서 대안으로 Cython을 통하여 약 100배에 달하는 성능향상을 가져올 수 도 있다.
 
-.. note::  파이썬의 인터프린트는 한갱의 코어 프로세스에서만 동작한다 이때 락을 GIL(Global Interpreter Lock)이라고 한다.
-그렇지 않다면 멀티 프로세스 개념을 통하여 GIL을 회피하는 것도 한가지 대안이 될 수 있다.
+::
+
+    파이썬의 인터프린트는 한갱의 코어 프로세스에서만 동작한다 이때 락을 GIL(Global Interpreter Lock)이라고 한다.
+    그렇지 않다면 멀티 프로세스 개념을 통하여 GIL을 회피하는 것도 한가지 대안이 될 수 있다.
 
 
 3 Level Concurrency
@@ -17,8 +19,8 @@ Concurrency
     CPU bound 태스크의 경우에는 멀티 프로세스를 도입하여 GIL을 회피하는 것도 한가지 대안이 될 수 있다.
     그리고 I/O bound 태스크에는 멀티 스레드나 멀티 태스크 보다는 network latency와 같은 것이 주요한 원인이 될 수 있다.
 
-    여기서는 Concurrency를 세 단계로 나누어서 살펴보기로 하자.
 
+여기서는 Concurrency를 세 단계로 나누어서 살펴보기로 하자.
 
     1. Low-level Concurrency
 
