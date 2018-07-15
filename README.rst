@@ -5,6 +5,7 @@ Concurrency
 그래서 대안으로 Cython을 통하여 약 100배에 달하는 성능향상을 가져올 수 도 있다.
 
 .. note::
+
     GIL: 파이썬의 인터프린트는 한갱의 코어 프로세스에서만 동작한다 이때 락을 GIL(Global Interpreter Lock)이라고 한다
 
 
