@@ -22,5 +22,44 @@ Concurrency
 
 여기서는 Concurrency를 세 단계로 나누어서 살펴보기로 하자.
 
-    1. Low-level Concurrency
+    1. Low-Level Concurrency
+
+        해당 레벨의 동시성은 원자성 연산(atomic operation)을 명시적으로 사용하는 것을 의미하며 어플리케이션 작성자보다는 라이브러리 개발자가 많이 사용한다
+        이 레벨의 동시성은 파이썬에서 제공하지 않는다
+
+    2. Mid-Level Concurrency
+
+        이 레벨에 해당하는 동시성은 원자성 연산을 사용하지느 않지만 락을 사용한 동시성 제어가 이루어지는 것을 의미한다. 대부분은의 언어가 지원하고 있으며 파이썬에서는 다음와 같은 클래스가 이에 해당한다.
+        e.g) threading.Semaphore, threading.Lock, multiprocessing.Lock
+
+    3. High-Level Concurrency
+
+        원자성 연산이나 락을 사용하는 것이 아닌 동시성을 의미하며 파이썬에서는 concurrent.futures나 queue모듈등이 이에 해당한다.
+
+
+위에서 언급한 것과 같이 다양한 레벨로 동시성 제어가 가능하다. 하지만 Mid-Level로 동시성을 제어할 경우에 에러(error prone)가 발생할 가능성이 높아진다. 핵심 이슈는 데이터 공유에 있다
+그러므로 가능하다면 짧은 시간만 락을 걸어서 사용해야 한다. 더 좋은 방법은 데이터 공유를 안하는 것이다. 공유하지 않는다면 락에 대한 문제는 사라지게 된다.
+
+이런 예로 큐를 사용하는 것이 있는데 multiprocessing.JoinableQueue and multiprocessing.Queue가 해당된다. 이들 자료구조가 동시성 문제를 지원하는 자료구조들이다.
+
+Example
+-------
+
+| 여기에서는 두가지 예제를 다룰 예정이다. 둘다 High-Level Concurrency를 활용하고 있으며 하나는 CPU-bound 태스크를 또 다른 하나는 I/O-bound 태스크에 해당한다.
+| 각각의 링크는 아래와 같다
+
+
++===============================+
+|        Summary                |
++===============================+
+|     `CPU Bound Concurrency`_  |
++-------------------------------+
+|     `I/O Bound Concurrency`_  |
++-------------------------------+
+
+
+.. _`CPU Bound Concurrency`: ./cpu-bound-concurrency/README.rst
+.. _`I/O Bound Concurrency`: ./io-bound-concurrency/README.rst
+
+
 
